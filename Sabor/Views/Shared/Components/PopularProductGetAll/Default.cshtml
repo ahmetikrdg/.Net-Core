@@ -1,0 +1,12 @@
+﻿@model PopularProductListViewModel
+
+@foreach (var p in Model.popularProducts)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="~/img/@p.Image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@p.Title</h5>
+            <a href="@p.Url">İçerik</a>
+        </div>
+    </div>
+}

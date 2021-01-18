@@ -1,0 +1,16 @@
+﻿@model SliderModel
+
+<div class="container">
+    <h2>Vertical (basic) form</h2>
+    <form asp-controller="Admin" asp-action="SliderCreate" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="email"></label>
+            <input type="text" class="form-control" placeholder="" asp-for="Url">
+        </div>
+
+        <label class="form-label" for="customFile">Kıçırıldınıze</label>
+        <input type="file" name="formFile" class="form-control" asp-for="Image" />
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,10 @@
+﻿@model VideoListViewModel
+
+@foreach (var item in Model.Videos)
+{
+    <div class="td_wrapper_player td_wrapper_playlist_player_youtube" data-first-video="" data-autoplay="1">
+        <div id="player_youtube" style="height: 100%">
+            <iframe id="iframesbNNlZXTIfg" src="https://www.youtube.com/embed/@item.Url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        </div>
+    </div>
+}

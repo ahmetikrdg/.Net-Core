@@ -1,0 +1,44 @@
+﻿@model SliderListViewModel
+    <a class="btn btn-primary mb-3 btn-create" style="float: right" asp-controller="admin" asp-action="SliderCreate" role="button">Slider Ekle</a>
+
+    <table id="dataTable" class="text-center">
+        <thead class="bg-light text-capitalize">
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Fotoğraf</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Sliders.Count > 0)//ürün varsa gel foreachı çalıştır
+            {
+                @foreach (var item in Model.Sliders)//her ürüne göre oluşacak
+                {
+                    <tr>
+                        <td>@item.SliderId</td>     
+                        <td>@item.Url</td>
+                        <td><img src="~/img/@item.Image" alt="Alternate Text" width="80"/></td>
+                        <td>
+                            <a href="/admin/SliderEdit/@item.SliderId" class="btn btn-primary btn-sm mr-2">Güncelle</a>
+
+                        </td>
+                        <td>
+
+                            <form action="/admin/SliderDelete" method="post">
+                                <input type="hidden" name="SliderId" value="@item.SliderId" />
+                                <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                } }
+            else @*eğer yoksa*@ {
+                <div class="alert alert-warning" role="alert">
+                    <h3>Ürün Yok</h3>
+                </div>
+            }
+        </tbody>
+    </table>

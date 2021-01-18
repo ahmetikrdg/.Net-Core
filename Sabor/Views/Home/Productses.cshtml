@@ -1,0 +1,50 @@
+﻿@model ProductsListViewModel
+
+@await Component.InvokeAsync("Categories")
+
+
+@foreach (var p in Model.Products)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="~/img/@p.Image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@p.Title</h5>
+            <a asp-controller="Home"
+               asp-action="ProductDetail" asp-route-Urunid="@p.ProductId">İçerik</a>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+    <div class="col">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @for (int i = 0; i < Model.pageInfo.TotalPages(); i++)
+                {
+                    @if (string.IsNullOrEmpty(Model.pageInfo.CurrentCategory))//kategori dolumu boşmu
+                    {
+                        <li class="page-item @(Model.pageInfo.CurrentPage==i+1?"active":"")">@**o an hangi sayfa gösteriliyorsa currentpage ile bu değer gelir*@
+                            @*o an hangi sayfa gösteriliyorsa o sayı i+1 e eşits
+                                e aktif olsun buton değilse pasif*@     
+                            <a class="page-link" href="/Sbr/Urunler?pages=@(i+1)"> @*bu değer routeye gider*@
+                                @*controllerden page verilirse giderse ve zaten i+1 artacak oda eşitse buna basınca 1,2 ye gider*@
+                                @(i+1) @*ekranda gösterilecek*@
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item @(Model.pageInfo.CurrentPage==i+1?"active":"")">
+                            <a class="page-link" href="/Sbr/Urunler/@Model.pageInfo.CurrentCategory?pages=@(i+1)">
+                                @(i+1)
+                            </a>
+                        </li>
+                    }
+
+                }
+
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model VideoListViewModel
+
+<a class="btn btn-primary mb-3 btn-create" style="float: right" asp-controller="admin" asp-action="VideoCreate" role="button">Video Ekle</a>
+
+<table id="dataTable" class="text-center">
+    <thead class="bg-light text-capitalize">
+        <tr>                        
+            <th>Id</th>
+            <th>Başlık</th>
+            <th>Url</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Videos.Count > 0)//ürün varsa gel foreachı çalıştır
+        {
+            @foreach (var item in Model.Videos)//her ürüne göre oluşacak
+            {
+                <tr>
+                    <td>@item.VideoId</td>
+                    <td>@item.Title</td>
+                    <td>@item.Url</td>
+                    <td>
+                        <a href="/admin/VideoEdit/@item.VideoId" class="btn btn-primary btn-sm mr-2">Güncelle</a>
+
+                    </td>
+                    <td>
+
+                        <form action="/admin/VideoDelete" method="post">        
+                            <input type="hidden" name="VideoId" value="@item.VideoId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                        </form>
+                    </td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>

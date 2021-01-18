@@ -1,0 +1,43 @@
+﻿@model ProductsListViewModel
+
+<a class="btn btn-primary mb-3 btn-create" style="float: right" asp-controller="admin" asp-action="ProductCreate" role="button">Ürün Ekle</a>
+
+<table id="dataTable" class="text-center">
+    <thead class="bg-light text-capitalize">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Products.Count > 0)//ürün varsa gel foreachı çalıştır
+        {
+            @foreach (var item in Model.Products)//her ürüne göre oluşacak
+            {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td><img src="~/img/@item.Image" alt="Alternate Text" width="80" /></td>
+            <td>
+                <a href="/admin/ProductEdit/@item.ProductId" class="btn btn-primary btn-sm mr-2">Güncelle</a>
+
+            </td>       
+            <td>
+
+                <form action="/admin/ProductDelete" method="post">
+                    <input type="hidden" name="ProductId" value="@item.ProductId" />
+                    <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                </form>
+            </td>
+
+        </tr>
+            }
+        }
+    </tbody>
+</table>

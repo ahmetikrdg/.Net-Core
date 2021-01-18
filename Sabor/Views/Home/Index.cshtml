@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<h1>son eklenen ürünler</h1>
+@await Component.InvokeAsync("ProductLastGetAll")
+<br />
+<h1>Sizin için seçtiklerimiz</h1>
+@await Component.InvokeAsync("PopularProductGetAll")

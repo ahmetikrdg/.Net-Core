@@ -1,0 +1,34 @@
+﻿@model VideoModel
+
+<form asp-controller="Admin" asp-action="VideoEdit" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-lg-6 col-ml-12">
+            <input type="hidden" name="VideoId" value="@Model.VideoId" />
+            <div class="row">
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="title"></label>
+                                <input type="text" class="form-control" placeholder="" asp-for="Title">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label asp-for="Url" for="example-url-input" class="col-form-label">URL</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3">https://halichub.com.tr/</span>
+                                    </div>
+                                    <input asp-for="Url" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,36 @@
+﻿@model LoginModel
+@{ Layout = null; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sabor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/register/dist/css.css" rel="stylesheet" />
+    <link rel="stylesheet" href="normalize.min.css">
+    <link href="~/register/dist/style.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="user">
+        <header class="user__header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+            <h1 class="user__title">Giriş Yap</h1>
+        </header>
+        <form class="form" asp-controller="Account" asp-action="Login" method="post">
+            <div asp-validation-summary="All" class="text-danger" style="color:red"></div>
+            <div class="form__group">
+                <input type="text" placeholder="Kullanıcı Adı" asp-for="Username" class="form__input" required />
+            </div>
+
+            <div class="form__group">
+                <input type="password" placeholder="Şifre" asp-for="Password" class="form__input" required />
+            </div>
+            <button class="btn" type="submit">Giriş Yap</button>
+            <a href="/account/forgotpassword">Şifremi Unuttum</a>       
+        </form>
+    </div>
+    <!-- partial -->
+    <script src="~/register/dist/script.js"></script>
+</body>
+</html>

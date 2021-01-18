@@ -1,0 +1,8 @@
+﻿@model List<Category>
+@foreach (var item in Model)
+{
+    <li>
+        <a asp-controller="Home"
+           asp-action="Productses"
+           asp-route-category="@item.Title" class="@(ViewBag.SelectedCategory == item.Title?"active":"")"> @item.Title</a>
+    </li>}

@@ -1,0 +1,13 @@
+﻿@model ProductsListViewModel
+
+@foreach (var p in Model.Products)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="~/img/@p.Image" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@p.Title</h5>
+            <a asp-controller="Home"
+               asp-action="ProductDetail" asp-route-Urunid="@p.ProductId">İçerik</a>
+        </div>
+    </div>
+}

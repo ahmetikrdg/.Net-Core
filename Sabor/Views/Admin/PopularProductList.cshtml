@@ -1,0 +1,43 @@
+﻿@model PopularProductListViewModel
+
+<a class="btn btn-primary mb-3 btn-create" style="float: right" asp-controller="admin" asp-action="PopularProductCreate" role="button">Sizin için seçtiklerimiz Ekle</a>
+
+<table id="dataTable" class="text-center">
+    <thead class="bg-light text-capitalize">
+        <tr>
+            <th>Id</th>
+            <th>Başlık</th>
+            <th>Resim</th>
+            <th>Ürünün Url'si</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+                    
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.popularProducts.Count > 0)//ürün varsa gel foreachı çalıştır
+        {
+            @foreach (var popProduct in Model.popularProducts)//her ürüne göre oluşacak
+            {
+        <tr>
+            <td>@popProduct.PopularProductId</td>
+            <td>@popProduct.Title</td>
+            <td><img src="~/img/@popProduct.Image" width="80" alt="Alternate Text" /></td>
+            <td>@popProduct.Url</td>
+
+            <td>
+                <a href="/admin/PopularProductEdit/@popProduct.PopularProductId" class="btn btn-primary btn-sm mr-2">Güncelle</a>
+            </td>
+            <td>
+
+                <form action="/admin/PopularProductDelete" method="post">
+                    <input type="hidden" name="PopularProductId" value="@popProduct.PopularProductId" />
+                    <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                </form>
+            </td>
+
+        </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,13 @@
+﻿@model CategoryModel
+
+<div class="container">
+    <form asp-controller="Admin" asp-action="CategoryCreate" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="Title">Kategori Başlığı</label>
+            <input type="text" class="form-control" placeholder="" asp-for="Title">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>

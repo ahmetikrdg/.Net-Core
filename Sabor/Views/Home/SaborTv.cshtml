@@ -1,0 +1,68 @@
+﻿@model VideoListViewModel
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link href="~/video/css/style.css" rel="stylesheet" />
+    <title>Fantom Blog</title>
+</head>
+
+<body style="background: #f2f2f3">
+
+    <section class="video-p">
+        <div id="td_uid_7_5d9f731f9699b" class="tdc-row">
+            <div class="vc_row td_uid_14_5d9f731f969a8_rand  wpb_row td-pb-row">
+                <div class="vc_column td_uid_15_5d9f731f96d86_rand  wpb_column vc_column_container tdc-column td-pb-span12">
+                    <div class="wpb_wrapper">
+                        <div class="td_block_wrap td_block_video_playlist td_uid_16_5d9f731f97589_rand">
+                            <div class="td_block_inner">
+                                <div class="td_video_playlist_column_3">
+                                    <div class="td_wrapper_video_playlist">
+                                        @await Component.InvokeAsync("VideoOne")
+                                        <div class="td_container_video_playlist ">
+                                            <div class="td_video_controls_playlist_wrapper">
+                                                <div class="td_video_stop_play_control">
+                                                    <a class="td-sp-video-play td-sp td_youtube_control" onlclick="play(sbNNlZXTIfg)">
+                                                    </a>
+                                                </div>
+                                                <div class="td_current_video_play_title_youtube td_video_title_playing">
+                                                    Video Playlist
+
+                                                </div>
+                                                <div class="td_current_video_play_time_youtube td_video_time_playing">
+                                                </div>
+                                            </div>
+
+                                            <div id="td_youtube_playlist_video" class="td_playlist_clickable ">
+
+                                                @foreach (var item in Model.Videos)
+                                                {
+                                                    <a onclick="playSong('@item.Url')" class="@item.Url td_click_video td_click_video_youtube" data-video-id="@item.Url">
+                                                        <div class="td_video_thumb"><img src="https://img.youtube.com/vi/@item.Url/default.jpg" alt="Video thumbnail"></div>
+                                                        <div class="td_video_title_and_time">
+                                                            <div id="@item.Url" class="td_video_title"><p>@item.Title</p></div>
+                                                        </div>
+                                                    </a>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/video/js/script.js"></script>
+</body>
+
+</html>

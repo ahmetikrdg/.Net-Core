@@ -1,0 +1,44 @@
+﻿@model ProductModel
+
+<form asp-controller="Admin" asp-action="ProductEdit" method="post" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-lg-6 col-ml-12">
+            <input type="hidden" name="ProductId" value="@Model.ProductId" />
+            <div class="row">
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="Title"></label>
+                                <input type="text" class="form-control" placeholder="" asp-for="Title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Description"></label>
+                                <input type="text" class="form-control" placeholder="" asp-for="Description">
+                            </div>
+
+                            <label class="form-label" for="customFile">Kıçırıldınıze</label>
+                            <img src="~/img/@Model.Image" width="80" alt="Alternate Text" />
+                            <input type="file" name="formFile" class="form-control" asp-for="Image" />
+
+                            @foreach (var Category in (List<Category>)ViewBag.Categories)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="CategoryIds" value="@Category.CategoryId" id="Category_@(Category.CategoryId)" @(Model.SelectedCategories.Any(i => i.CategoryId == Category.CategoryId) ? "checked" : "")>
+                                    <label class="form-check-label" for="category_@(Category.CategoryId)"> @Category.Title </label> @*burada id vermemizin sebebi labeldeki forla eşitlensin diye yani category_1 id forda öyle o onun hesabı*@
+                                </div>
+                            }
+                            @*Aslında şöyle özetlemek yanlış olmaz ID ordaki metin alanı için verilmiş bir isimdir ve amacı genellikle javascript,
+                            css veya label ile manipülasyon için kullanılır. Value adı üstünde alanın değeridir. Name ise o değeri kaydederken
+                            veritaban tablosunda hangi isimle kaydedileceğini belirler. Örneğin name="soyisim" value="demir" sonucu sunucuya soyisim alanına demir değerini kaydet gibi gider.*@
+                            <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
